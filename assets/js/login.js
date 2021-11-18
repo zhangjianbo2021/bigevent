@@ -23,10 +23,10 @@ $(function() {
         repwd: function(value) {
             // 通过形参拿到的是确认密码框中的内容
             // 还需要拿到密码框中的内容
-            // 然后进行一次等于的判断
-            // 如果判断失败,则return一个提示消息即可
             var pwd = $('.reg-box [name=password]').val()
+                // 然后进行一次等于的判断
             if (pwd !== value) {
+                // 如果判断失败,则return一个提示消息即可
                 return '两次密码不一致！'
             }
         }
@@ -85,7 +85,9 @@ $(function() {
         $.ajax({
                 url: '/api/login',
                 method: 'post',
+                //获取当时前表单里填写的数据
                 data: $(this).serialize(),
+                //回调函数
                 success: function(res) {
                     if (res.status != 0) {
                         return layer.msg('登录失败！')
@@ -96,22 +98,10 @@ $(function() {
                     // console.log(res.token);
                     //跳转到后台主页
                     location.href = '/index.html'
-
-
                 }
-
-
-
 
             }
 
         )
-
-
-
-
     })
-
-
-
 })
