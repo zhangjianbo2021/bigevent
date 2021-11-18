@@ -8,7 +8,6 @@ $.ajaxPrefilter(function(options) {
         //统一为有权限的接口设置headers请求头
         options.headers = { Authorization: localStorage.getItem('token') || '' }
     }
-<<<<<<< HEAD
     //全局统一挂载complete回调函数
     options.complete = function(res) {
         console.log('执行了complete回调');
@@ -20,6 +19,4 @@ $.ajaxPrefilter(function(options) {
         }
 
     }
-=======
->>>>>>> 83906a1a82a86c49dac6cfe374c6ad23486f1f4a
 })
