@@ -19,28 +19,29 @@ function getUserInfo() {
         url: '/my/userinfo',
         success: function(res) {
             if (res.status !== 0) {
-                console.log('这个是测试输出的数据：')
+                console.log('这个是在请求失败时返回的数据：')
                 console.log(res);
                 return layui.layer.msg('获取用户信息失败')
             }
             //渲染用户的头像
-            console.log('这个也是测试输出的数据：' + res.data)
+            console.log('这个是在请求用户信息成功后获取到的数据：res.data')
+            console.log(res.data);
             renderAvatar(res.data);
         },
         //不论ajax请求是成功还是失败，都会调用complete回调函数
-        complete: function(res) {
-            console.log('执行了complete回调');
-            console.log(res)
-                //在complete回调函数中可以使用res.responsJSON拿到服务器响应回来的数据
-            if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！') {
-                localStorage.removeItem('token')
-                location.href = '/login.html'
-            }
+        // complete: function(res) {
+        //     console.log('执行了complete回调');
+        //     console.log(res)
+        //         //在complete回调函数中可以使用res.responsJSON拿到服务器响应回来的数据
+        //     if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！') {
+        //         localStorage.removeItem('token')
+        //         location.href = '/login.html'
+        //     }
 
-        }
+        // }
     })
 }
-
+//渲染用户头像方法
 function renderAvatar(user) {
     //获取用户名称
     var name = user.nickname || user.username
